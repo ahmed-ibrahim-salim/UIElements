@@ -13,7 +13,6 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
         
-        
         // add view controllers
         tabBarSetUp()
         
@@ -59,12 +58,17 @@ class MainTabBarController: UITabBarController {
 //        messageLbl.tintColor = .red
 //
 //
-//        self.view.addSubview(newView)
-//        newView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        newView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        newView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//        newView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-//
+//newView.translatesAutoresizingMaskIntoConstraints = false
+////        newView.backgroundColor = .green
+////        newView.layer.borderWidth = 20
+////        newView.layer.borderColor = UIColor.blue.cgColor
+////        newView.layer.cornerRadius = 20
+////        self.view.addSubview(newView)
+////        newView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+////        newView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+////        newView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+////        newView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+////
 //
 //        self.view.addSubview(messageLbl)
 //        messageLbl.centerXAnchor.constraint(equalTo: newView.centerXAnchor).isActive = true
