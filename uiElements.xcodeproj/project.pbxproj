@@ -16,6 +16,7 @@
 		EF67BA8A292BA20B00CCB864 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */; };
 		EF67BA8C292BA21200CCB864 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8B292BA21200CCB864 /* SearchViewController.swift */; };
 		EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */; };
+		EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */; };
 		EFEFC059292CE5860085D8B7 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC058292CE5860085D8B7 /* CollectionViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		EF67BA8B292BA21200CCB864 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderView.swift; sourceTree = "<group>"; };
 		EFEFC058292CE5860085D8B7 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				EFEFC058292CE5860085D8B7 /* CollectionViewTableViewCell.swift */,
+				EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				EF67BA77292B885F00CCB864 /* MainTabBarController.swift in Sources */,
 				EFEFC059292CE5860085D8B7 /* CollectionViewTableViewCell.swift in Sources */,
 				EF67BA73292B885F00CCB864 /* AppDelegate.swift in Sources */,
+				EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */,
 				EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */,
 				EF67BA75292B885F00CCB864 /* SceneDelegate.swift in Sources */,
 				EF67BA8A292BA20B00CCB864 /* UpcomingViewController.swift in Sources */,

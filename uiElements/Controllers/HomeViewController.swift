@@ -24,6 +24,9 @@ class HomeViewController: UIViewController {
         
         homeTableView.delegate = self
         homeTableView.dataSource = self
+        
+        let heroHeaderView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height / 2))
+        homeTableView.tableHeaderView = heroHeaderView
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
