@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF06A3FC2990EFFA003A35D6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EF06A3FB2990EFFA003A35D6 /* SnapKit */; };
 		EF67BA73292B885F00CCB864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA72292B885F00CCB864 /* AppDelegate.swift */; };
 		EF67BA75292B885F00CCB864 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA74292B885F00CCB864 /* SceneDelegate.swift */; };
 		EF67BA77292B885F00CCB864 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA76292B885F00CCB864 /* MainTabBarController.swift */; };
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF06A3FC2990EFFA003A35D6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,10 +68,6 @@
 		EF67BA71292B885F00CCB864 /* uiElements */ = {
 			isa = PBXGroup;
 			children = (
-				EFEFC057292CE5540085D8B7 /* Resources */,
-				EFEFC056292CE54E0085D8B7 /* Models */,
-				EFEFC055292CE5400085D8B7 /* Managers */,
-				EFEFC054292CE5350085D8B7 /* ViewModels */,
 				EFEFC053292CE5220085D8B7 /* Views */,
 				EF67BA86292BA18800CCB864 /* Controllers */,
 				EF67BA72292B885F00CCB864 /* AppDelegate.swift */,
@@ -102,34 +100,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EFEFC054292CE5350085D8B7 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		EFEFC055292CE5400085D8B7 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		EFEFC056292CE54E0085D8B7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		EFEFC057292CE5540085D8B7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +116,9 @@
 			dependencies = (
 			);
 			name = uiElements;
+			packageProductDependencies = (
+				EF06A3FB2990EFFA003A35D6 /* SnapKit */,
+			);
 			productName = uiElements;
 			productReference = EF67BA6F292B885F00CCB864 /* uiElements.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +147,9 @@
 				Base,
 			);
 			mainGroup = EF67BA66292B885F00CCB864;
+			packageReferences = (
+				EF06A3FA2990EFFA003A35D6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = EF67BA70292B885F00CCB864 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -418,6 +394,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF06A3FA2990EFFA003A35D6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF06A3FB2990EFFA003A35D6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF06A3FA2990EFFA003A35D6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF67BA67292B885F00CCB864 /* Project object */;
 }

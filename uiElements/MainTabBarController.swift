@@ -36,6 +36,8 @@ class MainTabBarController: UITabBarController {
 
         tabBar.tintColor = .label
         setViewControllers([home, upcoming, search, downloads], animated: true)
+        
+        selectedIndex = 1
     }
 }
 
