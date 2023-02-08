@@ -8,9 +8,17 @@
 import UIKit
 import SnapKit
 
-class UpcomingViewController: UIViewController {
+class ProfileStackView: UIView{
     
-    // followers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    //MARK: followers
     var followersCountLbl: UILabel! = {
         let lbl = UILabel()
         lbl.text = "200.6K"
@@ -39,7 +47,7 @@ class UpcomingViewController: UIViewController {
         let stack = UIStackView()
         return stack
     }()
-    // likes
+    //MARK: likes
     var likesCountLbl: UILabel! = {
         let lbl = UILabel()
         lbl.text = "50.6K"
@@ -69,7 +77,7 @@ class UpcomingViewController: UIViewController {
         return stack
     }()
     
-    // posts
+    //MARK: posts
     var postsCountLbl: UILabel! = {
         let lbl = UILabel()
         lbl.text = "5.6K"
@@ -100,11 +108,6 @@ class UpcomingViewController: UIViewController {
         return vw
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        makeStacks()
-    }
     func makeSmallStack(countLbl: UILabel,
                         nameLbl: UILabel,
                         vStack: inout UIStackView,
@@ -128,54 +131,69 @@ class UpcomingViewController: UIViewController {
         return containerHStack
     }
     
-    func makeStacks(){
-        // followers labels
-        // making v stack for labels
-        let followersStack = makeSmallStack(countLbl: followersCountLbl,
-                                   nameLbl: followersLbl,
-                                            vStack: &followersVStack,
-                                            seperator: followerSeperatorView,
-                                            containerHStack: &followersHstack)
-        
-        let likesStack = makeSmallStack(countLbl: likesCountLbl,
-                                         nameLbl: likesLbl,
-                                        vStack: &likesVStack,
-                                            seperator: likesSeperatorView,
-                                            containerHStack: &likesHStack)
-        
-        let postsVStack = UIStackView(arrangedSubviews: [postsCountLbl, postsLbl])
-        postsVStack.axis = .vertical
-        
-        
-        postsCountLbl.snp.makeConstraints({ make in
-            make.height.equalToSuperview().multipliedBy(0.5)
-        })
-        
+    func commonInit(){
+            // followers labels
+            // making v stack for labels
+            let followersStack = makeSmallStack(countLbl: followersCountLbl,
+                                       nameLbl: followersLbl,
+                                                vStack: &followersVStack,
+                                                seperator: followerSeperatorView,
+                                                containerHStack: &followersHstack)
+            
+            let likesStack = makeSmallStack(countLbl: likesCountLbl,
+                                             nameLbl: likesLbl,
+                                            vStack: &likesVStack,
+                                                seperator: likesSeperatorView,
+                                                containerHStack: &likesHStack)
+            
+            let postsVStack = UIStackView(arrangedSubviews: [postsCountLbl, postsLbl])
+            postsVStack.axis = .vertical
+            
+            
+            postsCountLbl.snp.makeConstraints({ make in
+                make.height.equalToSuperview().multipliedBy(0.5)
+            })
+            
 
-        wideHstack = UIStackView(arrangedSubviews: [followersStack, likesStack, postsVStack])
-        
-        wideHstack.axis = .horizontal
-        wideHstack.distribution = .fillEqually
-        
-//        wideHstack.layer.borderWidth = 1
-//        wideHstack.layer.borderColor = UIColor.red.cgColor
+            wideHstack = UIStackView(arrangedSubviews: [followersStack, likesStack, postsVStack])
+            
+            wideHstack.axis = .horizontal
+            wideHstack.distribution = .fillEqually
+            
+    //        wideHstack.layer.borderWidth = 1
+    //        wideHstack.layer.borderColor = UIColor.red.cgColor
 
-        containerView.addSubview(wideHstack)
-                
-        view.addSubview(containerView)
-        
-        wideHstack.snp.makeConstraints({ make in
-            make.centerX.centerY.equalToSuperview()
-        })
-        
-        containerView.snp.makeConstraints({ make in
-            make.centerY.centerX.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.15)
-            make.width.equalToSuperview().multipliedBy(0.9)
+            containerView.addSubview(wideHstack)
+                    
+            addSubview(containerView)
+            
+            wideHstack.snp.makeConstraints({ make in
+                make.centerX.centerY.equalToSuperview()
+            })
+            
+            containerView.snp.makeConstraints({ make in
+                make.centerY.centerX.equalToSuperview()
+                make.height.equalToSuperview().multipliedBy(0.15)
+                make.width.equalToSuperview().multipliedBy(0.9)
 
-            //
-        })
-    }
+            })
+        }
+}
+
+// MARK: Controller
+class UpcomingViewController: UIViewController {
     
+    var profileStackView: ProfileStackView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        
+        profileStackView = ProfileStackView(frame: CGRect(x: 0, y: 0,
+                                                          width: view.frame.width,
+                                                          height: view.frame.height))
+        view.addSubview(profileStackView)
+
+    }
     
 }
