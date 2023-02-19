@@ -29,6 +29,11 @@ class SearchViewController: UIViewController {
     let passTxtField: DesignableUITextField! = {
         let txtField = DesignableUITextField()
         
+        txtField.trailingPadding = 0
+        txtField.trailingImage = UIImage(systemName: "eye")
+
+//        containerControl
+        
         txtField.leadingImage = UIImage(systemName: "pencil.circle.fill")
         txtField.leadingPadding = 10
         txtField.imageTintColor = .black
@@ -44,39 +49,102 @@ class SearchViewController: UIViewController {
     }()
     
     var textFieldsStack = UIStackView()
+    
+    var eyeControl: PasswordControl!
+    var eyeControlShowPass = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
         
         setConst()
+        
+        
+        eyeControl = passTxtField.rightView as? PasswordControl
+        eyeControl.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
     }
-    
+    @objc func showPassword(){
+        print("aaaaa")
+        toggleShowPass()
+    }
+    func toggleShowPass(){
+        eyeControlShowPass.toggle()
+//        eyeControl.image = UIImage()
+        if eyeControlShowPass{
+            eyeControl.setNewImage(newImage: UIImage(systemName: "xmark")!)
+        }else{
+            eyeControl.useOldImage()
+        }
+    }
     func setConst(){
         
         
         textFieldsStack = UIStackView(arrangedSubviews: [mailTxtField, passTxtField])
         textFieldsStack.axis = .vertical
-//        textFieldsStack.spacing = 10
+        textFieldsStack.distribution = .fillEqually
+        textFieldsStack.spacing = 5
         
-        mailTxtField.snp.makeConstraints({ make in
-            make.height.equalToSuperview().multipliedBy(0.45)
-        })
-        passTxtField.snp.makeConstraints({ make in
-            make.height.equalToSuperview().multipliedBy(0.45)
-        })
         
         view.addSubview(textFieldsStack)
 
         textFieldsStack.snp.makeConstraints({ make in
             make.centerY.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalToSuperview().multipliedBy(0.15)
+            make.height.equalToSuperview().multipliedBy(0.12)
         })
         
         
     }
 }
+
+class PasswordControl: UIControl{
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("not implemented")
+    }
+    
+    var imageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 30))
+        imageView.contentMode = .scaleAspectFit
+
+        return imageView
+    }()
+    
+    var image: UIImage? {
+        didSet {
+            drawPassControl()
+        }
+    }
+    var imageTintColor: UIColor = UIColor.lightGray {
+        didSet {
+            drawPassControl()
+        }
+    }
+    func setNewImage(newImage: UIImage){
+        imageView.image = newImage
+
+    }
+    func useOldImage(){
+        imageView.image = image
+    }
+    func drawPassControl(){
+
+        imageView.image = image
+
+        // Note: In order for your image to use the tint color, you have to select the image in the Assets.xcassets and change the "Render As" property to "Template Image".
+        imageView.tintColor = imageTintColor
+
+        addSubview(imageView)
+        
+    }
+    
+}
+
+
 
 //MARK: Custom Text
 class DesignableUITextField: UITextField {
@@ -91,7 +159,7 @@ class DesignableUITextField: UITextField {
     // Provides right padding for images
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         var textRect = super.rightViewRect(forBounds: bounds)
-        textRect.origin.x -= leadingPadding
+        textRect.origin.x -= trailingPadding
         return textRect
     }
     
@@ -101,7 +169,15 @@ class DesignableUITextField: UITextField {
         }
     }
     
+    @IBInspectable var trailingImage: UIImage? {
+        didSet {
+            updateView()
+        }
+    }
+    
     @IBInspectable var leadingPadding: CGFloat = 0
+    @IBInspectable var trailingPadding: CGFloat = 0
+
     
     @IBInspectable var imageTintColor: UIColor = UIColor.lightGray {
         didSet {
@@ -121,6 +197,30 @@ class DesignableUITextField: UITextField {
         leftViewMode = UITextField.ViewMode.never
         leftView = nil
         
+        //trailing
+        if let image = trailingImage {
+            let passwordControl: PasswordControl = {
+                let psC = PasswordControl(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+                psC.image = image
+                psC.imageTintColor = imageTintColor
+                return psC
+                
+            }()
+            
+            
+            
+            if rtl {
+                
+                leftViewMode = UITextField.ViewMode.always
+                leftView = passwordControl
+            } else {
+                rightViewMode = UITextField.ViewMode.always
+                rightView = passwordControl
+            }
+        }
+        
+        
+        // leading
         if let image = leadingImage {
             var stack = UIStackView()
             
@@ -143,8 +243,8 @@ class DesignableUITextField: UITextField {
             let spacingView = UIView()
             
             stack = UIStackView(arrangedSubviews: [imageView, seperatorView, spacingView])
-            stack.spacing = 2
             
+            stack.spacing = 2
             
 //            stack.layer.borderColor = UIColor.black.cgColor
 //            stack.layer.borderWidth = 1
@@ -152,9 +252,7 @@ class DesignableUITextField: UITextField {
             imageView.snp.makeConstraints({make in
                 make.width.equalToSuperview().multipliedBy(0.7)
             })
-//            seperatorView.snp.makeConstraints({make in
-//                make.width.equalToSuperview().multipliedBy(0.05)
-//            })
+
             
             spacingView.snp.makeConstraints({make in
                 make.width.equalToSuperview().multipliedBy(0.1)
