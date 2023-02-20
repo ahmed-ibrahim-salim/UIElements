@@ -49,6 +49,7 @@ class DownloadsViewController: UIViewController {
 }
 
 struct Category{
+    var id: Int
     var color: UIColor
     var name: String
 }
@@ -57,13 +58,14 @@ class CircleView: UIView {
     var myColor = UIColor.red
     var borderColor = UIColor.black
     
-    var categories = [Category(color: .green, name: "ahmed"),
-                    Category(color: .red, name: "ahmed"),
-                    Category(color: .blue, name: "ahmed"),
-                    Category(color: .systemPink, name: "ahmed"),
-                    Category(color: .systemCyan, name: "ahmed"),
-                    Category(color: .systemMint, name: "ahmed"),
-                    Category(color: .systemTeal, name: "ahmed")]
+    var categories = [Category(id: 0, color: .green, name: "ahmed"),
+                      Category(id: 2, color: .red, name: "ahmed"),
+                      Category(id: 3, color: .blue, name: "ahmed"),
+                      Category(id: 4, color: .systemPink, name: "ahmed"),
+                      Category(id: 5, color: .systemCyan, name: "ahmed"),
+                      Category(id: 6, color: .systemMint, name: "ahmed"),
+                      Category(id: 7, color: .systemTeal, name: "ahmed")]
+//]
     
     var usedRects: [CGRect] = []
     var usedDiameters: [CGFloat] = []
@@ -88,10 +90,27 @@ class CircleView: UIView {
         for category in categories {
             
             //1. Circle Diameter
-            let diameter = getDiameter()
+            var diameter: CGFloat = 0
             
             //2. Circle Rect
-            let rect = getRect(diameter: diameter)
+            var rect: CGRect = .zero
+            
+            if category.id == 0{
+                //1. Circle Diameter
+                diameter = getDiameter(isFirst: true)
+                
+                //2. Circle Rect
+                rect = getRect(diameter: diameter, isFirst: true)
+                
+            }else{
+                
+                
+                diameter = getDiameter()
+                
+                //2. Circle Rect
+                rect = getRect(diameter: diameter)
+                
+            }
             
             //3. Circle Path
             let circlePath = UIBezierPath(roundedRect: rect, cornerRadius: diameter / 2)
@@ -103,15 +122,24 @@ class CircleView: UIView {
             circlePath.fill()
             
             //6. Circle Border Color
-//            borderColor.setStroke()
+            //            borderColor.setStroke()
             
             //7. Draw Circle Boder
-//            circlePath.stroke()
+            //            circlePath.stroke()
+            
         }
     }
     
-    func getDiameter() -> CGFloat {
-        let diameter = CGFloat(60 + arc4random_uniform(30))
+    func getDiameter(isFirst: Bool = false) -> CGFloat {
+        var diameter = CGFloat(0)
+        
+        if isFirst{
+            diameter = CGFloat(200)
+
+        }else{
+            diameter = CGFloat(40 + arc4random_uniform(30))
+        }
+        
         for usedDiameter in usedDiameters
         where usedDiameter == diameter {
             return getDiameter()
@@ -120,14 +148,25 @@ class CircleView: UIView {
         return diameter
     }
     
-    func getRect(diameter: CGFloat) -> CGRect {
-        let randomWidth = CGFloat(arc4random_uniform(UInt32(self.bounds.size.width))) * 0.8
-        let randomHeight = CGFloat(arc4random_uniform(UInt32(self.bounds.size.height))) * 0.4
+    func getRect(diameter: CGFloat, isFirst: Bool = false) -> CGRect {
+        
+        
+        var randomWidth: CGFloat = 0
+        var randomHeight: CGFloat = 0
+                
+        if isFirst{
+            randomWidth = CGFloat(UInt32(self.bounds.size.width)) * 0.4
+            randomHeight = CGFloat(UInt32(self.bounds.size.height)) * 0.4
+
+        }else{
+            randomWidth = CGFloat(arc4random_uniform(UInt32(self.bounds.size.width))) * 0.8
+            randomHeight = CGFloat(arc4random_uniform(UInt32(self.bounds.size.height))) * 0.4
+        }
+        
         
         let rect = CGRect(x: randomWidth, y: randomHeight, width: diameter, height: diameter)
         
-        for usedRect in usedRects
-        where usedRect.intersects(rect) {
+        for usedRect in usedRects where usedRect.intersects(rect) {
             return getRect(diameter: diameter)
         }
         usedRects.append(rect)
