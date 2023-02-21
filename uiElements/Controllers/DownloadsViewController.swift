@@ -9,18 +9,46 @@ import UIKit
 
 class DownloadsViewController: UIViewController {
     
-    let circleView = CircleView()
+    let circleViewContainer: UIView = {
+        let vw = UIView()
+        vw.layer.borderWidth = 2
+        vw.layer.borderColor = UIColor.black.cgColor
+        return vw
+    }()
+
+    
+    let circleView = CirclesView()
 //    let tapView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-    
-        view.addSubview(circleView)
+        makeCircleContainer()
 //        view.addSubview(tapView)
     }
     
+    func makeCircleContainer(){
+        
+        view.addSubview(circleViewContainer)
+
+        circleViewContainer.addSubview(circleView)
+        
+        circleView.snp.makeConstraints({ make in
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-40)
+            make.height.equalToSuperview()
+//                .multipliedBy(0.5)
+        })
+        
+        circleViewContainer.snp.makeConstraints({ make in
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-40)
+            make.height.equalToSuperview().multipliedBy(0.5)
+        })
+        
+
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         circleView.frame = view.frame
@@ -53,7 +81,8 @@ struct Category{
     var color: UIColor
     var name: String
 }
-class CircleView: UIView {
+
+class CirclesView: UIView {
     
     var myColor = UIColor.red
     var borderColor = UIColor.black
@@ -134,7 +163,7 @@ class CircleView: UIView {
         var diameter = CGFloat(0)
         
         if isFirst{
-            diameter = CGFloat(200)
+            diameter = CGFloat(100)
 
         }else{
             diameter = CGFloat(40 + arc4random_uniform(30))
