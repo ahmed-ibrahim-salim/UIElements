@@ -11,11 +11,11 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .white
         
         // add view controllers
         tabBarSetUp()
-        
+        tabBar.isTranslucent = false
     }
     
     func tabBarSetUp(){

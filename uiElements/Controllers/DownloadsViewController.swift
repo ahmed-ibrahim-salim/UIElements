@@ -36,14 +36,15 @@ class DownloadsViewController: UIViewController {
         
         circleView.snp.makeConstraints({ make in
             make.width.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-40)
+//            make.bottom.equalToSuperview().offset(-40)
             make.height.equalToSuperview()
 //                .multipliedBy(0.5)
         })
         
         circleViewContainer.snp.makeConstraints({ make in
             make.width.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-40)
+            make.bottom.equalToSuperview()
+//                .offset(-40)
             make.height.equalToSuperview().multipliedBy(0.5)
         })
         
@@ -163,10 +164,10 @@ class CirclesView: UIView {
         var diameter = CGFloat(0)
         
         if isFirst{
-            diameter = CGFloat(100)
+            diameter = CGFloat(150)
 
         }else{
-            diameter = CGFloat(40 + arc4random_uniform(30))
+            diameter = CGFloat(60 + arc4random_uniform(30))
         }
         
         for usedDiameter in usedDiameters
@@ -184,21 +185,36 @@ class CirclesView: UIView {
         var randomHeight: CGFloat = 0
                 
         if isFirst{
-            randomWidth = CGFloat(UInt32(self.bounds.size.width)) * 0.4
-            randomHeight = CGFloat(UInt32(self.bounds.size.height)) * 0.4
+            randomWidth = CGFloat(arc4random_uniform(UInt32(bounds.midX)))
+            randomHeight = CGFloat(arc4random_uniform(UInt32(bounds.midY)))
 
+            print(randomWidth, "first")
+            
         }else{
-            randomWidth = CGFloat(arc4random_uniform(UInt32(self.bounds.size.width))) * 0.8
-            randomHeight = CGFloat(arc4random_uniform(UInt32(self.bounds.size.height))) * 0.4
+            
+        // https://stackoverflow.com/questions/30318002/spawning-a-circle-in-a-random-spot-on-screen
+            
+            randomWidth = CGFloat(arc4random_uniform(UInt32(bounds.midX * 2))) * 0.8
+            randomHeight = CGFloat(arc4random_uniform(UInt32(bounds.midY * 2))) * 0.8
+            
+            print(randomWidth, "randomWidth")
+
+//            randomWidth = CGFloat(arc4random_uniform(UInt32(self.bounds.size.width))) * 0.8
+//            randomHeight = CGFloat(arc4random_uniform(UInt32(self.bounds.size.height)))
         }
         
-        
+        // created a rect
         let rect = CGRect(x: randomWidth, y: randomHeight, width: diameter, height: diameter)
         
+
         for usedRect in usedRects where usedRect.intersects(rect) {
+            // recursive call crashes
+
             return getRect(diameter: diameter)
         }
+        
         usedRects.append(rect)
+
         return rect
     }
     
