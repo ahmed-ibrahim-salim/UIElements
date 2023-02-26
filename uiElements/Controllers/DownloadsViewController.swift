@@ -52,9 +52,9 @@ class DownloadsViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         circleView.frame = view.frame
 
-//        tapView.frame = view.frame
 
     }
     
@@ -95,7 +95,6 @@ class CirclesView: UIView {
                       Category(id: 5, color: .systemCyan, name: "ahmed"),
                       Category(id: 6, color: .systemMint, name: "ahmed"),
                       Category(id: 7, color: .systemTeal, name: "ahmed")]
-//]
     
     var usedRects: [CGRect] = []
     var usedDiameters: [CGFloat] = []
@@ -114,9 +113,11 @@ class CirclesView: UIView {
         setNeedsDisplay()
     }
     
+    // MARK: Draw
     override func draw(_ rect: CGRect) {
         usedRects = []
         usedDiameters = []
+                
         for category in categories {
             
             //1. Circle Diameter
@@ -154,12 +155,14 @@ class CirclesView: UIView {
             //6. Circle Border Color
             //            borderColor.setStroke()
             
-            //7. Draw Circle Boder
+            //7. Draw Circle Border
             //            circlePath.stroke()
             
         }
+        
+        
     }
-    
+    // MARK: Diameter
     func getDiameter(isFirst: Bool = false) -> CGFloat {
         var diameter = CGFloat(0)
         
@@ -167,7 +170,7 @@ class CirclesView: UIView {
             diameter = CGFloat(150)
 
         }else{
-            diameter = CGFloat(60 + arc4random_uniform(30))
+            diameter = CGFloat(90 + arc4random_uniform(10))
         }
         
         for usedDiameter in usedDiameters
@@ -178,35 +181,47 @@ class CirclesView: UIView {
         return diameter
     }
     
+    // MARK: Circle Rect
     func getRect(diameter: CGFloat, isFirst: Bool = false) -> CGRect {
         
+        var posX: CGFloat = 0
+        var posY: CGFloat = 0
         
-        var randomWidth: CGFloat = 0
-        var randomHeight: CGFloat = 0
-                
+        // created a rect
+        // always intersects
+        var rect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        
+        
         if isFirst{
-            randomWidth = CGFloat(arc4random_uniform(UInt32(bounds.midX)))
-            randomHeight = CGFloat(arc4random_uniform(UInt32(bounds.midY)))
+            posX = CGFloat(UInt32(bounds.midX))
+//            * 0.32
+            posY = CGFloat(UInt32(bounds.midY))
+//            * 0.32
 
-            print(randomWidth, "first")
+            rect = CGRect(x: posX - diameter/2, y: posY - diameter/2, width: diameter, height: diameter)
+
+            print(posX, "first")
             
         }else{
             
         // https://stackoverflow.com/questions/30318002/spawning-a-circle-in-a-random-spot-on-screen
             
-            randomWidth = CGFloat(arc4random_uniform(UInt32(bounds.midX * 2))) * 0.8
-            randomHeight = CGFloat(arc4random_uniform(UInt32(bounds.midY * 2))) * 0.8
+            posX = CGFloat(arc4random_uniform(UInt32(bounds.maxX)))
+            posY = CGFloat(arc4random_uniform(UInt32(bounds.maxY)))
             
-            print(randomWidth, "randomWidth")
+            print(posX, "randomWidth")
 
-//            randomWidth = CGFloat(arc4random_uniform(UInt32(self.bounds.size.width))) * 0.8
-//            randomHeight = CGFloat(arc4random_uniform(UInt32(self.bounds.size.height)))
+            rect = CGRect(x: posX - diameter, y: posY - diameter, width: diameter, height: diameter)
+
         }
         
-        // created a rect
-        let rect = CGRect(x: randomWidth, y: randomHeight, width: diameter, height: diameter)
         
+        if checkOutOfBounds(rect: rect){
+            return getRect(diameter: diameter)
 
+        }
+        
+//      check intersection
         for usedRect in usedRects where usedRect.intersects(rect) {
             // recursive call crashes
 
@@ -216,6 +231,11 @@ class CirclesView: UIView {
         usedRects.append(rect)
 
         return rect
+    }
+    
+    //MARK: Out of bounds
+    func checkOutOfBounds(rect: CGRect)->Bool{
+        return rect.minX < bounds.minX || rect.minY < bounds.minX
     }
     
 }
