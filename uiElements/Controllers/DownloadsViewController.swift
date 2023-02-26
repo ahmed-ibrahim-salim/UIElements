@@ -9,32 +9,21 @@ import UIKit
 
 class DownloadsViewController: UIViewController {
     
+    // MARK: Circles Views
     let circleViewContainer: UIView = {
         let vw = UIView()
         vw.layer.borderWidth = 2
         vw.layer.borderColor = UIColor.black.cgColor
         return vw
     }()
-
     
-    let circleView = CirclesView()
-//    let tapView = UIView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
-        makeCircleContainer()
-//        view.addSubview(tapView)
-    }
-    
-    func makeCircleContainer(){
-        
+    let circlesView = CirclesView()
+    func makeCircles(){
         view.addSubview(circleViewContainer)
 
-        circleViewContainer.addSubview(circleView)
+        circleViewContainer.addSubview(circlesView)
         
-        circleView.snp.makeConstraints({ make in
+        circlesView.snp.makeConstraints({ make in
             make.width.equalToSuperview()
 //            make.bottom.equalToSuperview().offset(-40)
             make.height.equalToSuperview()
@@ -47,34 +36,15 @@ class DownloadsViewController: UIViewController {
 //                .offset(-40)
             make.height.equalToSuperview().multipliedBy(0.5)
         })
+    }
+    
+    // MARK: Didload
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         
-
+        makeCircles()
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        circleView.frame = view.frame
-
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        animate()
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        circleView.setNeedsDisplay()
-    }
-    
-    // Animation
-//    func animate() {
-//        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.autoreverse, .repeat], animations: {
-//            self.circleView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//        }, completion: nil)
-//    }
-    
 }
 
 struct Category{
@@ -83,6 +53,7 @@ struct Category{
     var name: String
 }
 
+// MARK: Circles View
 class CirclesView: UIView {
     
     var myColor = UIColor.red
@@ -94,14 +65,18 @@ class CirclesView: UIView {
                       Category(id: 4, color: .systemPink, name: "ahmed"),
                       Category(id: 5, color: .systemCyan, name: "ahmed"),
                       Category(id: 6, color: .systemMint, name: "ahmed"),
-                      Category(id: 7, color: .systemTeal, name: "ahmed")]
+                      Category(id: 7, color: .systemTeal, name: "ahmed"),
+                      Category(id: 8, color: .systemMint, name: "ahmed"),
+                      Category(id: 9, color: .systemMint, name: "ahmed"),
+
+]
     
     var usedRects: [CGRect] = []
     var usedDiameters: [CGFloat] = []
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = .lightGray
+        backgroundColor = .systemBackground
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,6 +87,8 @@ class CirclesView: UIView {
         super.touchesEnded(touches, with: event)
         setNeedsDisplay()
     }
+    
+
     
     // MARK: Draw
     override func draw(_ rect: CGRect) {
@@ -162,15 +139,45 @@ class CirclesView: UIView {
         
         
     }
+    
+    func calculateMidCircleDiamter()->CGFloat{
+        
+        // 6Y + x = 170  1
+        
+        // 7Y + x = 160  2
+        
+        
+        // Y = -10
+        
+        // x = 230
+        
+        
+        // 8Y + x = 150
+        
+        // ((6 * 35) - (6 * 12)) = 170, ((7 * 35) - (7 * 12)) = 160, 8 - 150, 10 - 130
+        
+        // 8 -> 150
+        //if all are 10 -> 130
+        
+        let diam: CGFloat = (CGFloat(categories.count) * -10) + 230
+        
+        return diam
+    }
+    
+    func calculateOtherCirclesDiamter()->CGFloat{
+        let diam = (CGFloat(categories.count) * 9)
+        
+        return diam
+    }
     // MARK: Diameter
     func getDiameter(isFirst: Bool = false) -> CGFloat {
         var diameter = CGFloat(0)
         
         if isFirst{
-            diameter = CGFloat(150)
+            diameter = calculateMidCircleDiamter()
 
         }else{
-            diameter = CGFloat(90 + arc4random_uniform(10))
+            diameter = CGFloat(calculateOtherCirclesDiamter() + CGFloat(arc4random_uniform(10)))
         }
         
         for usedDiameter in usedDiameters
@@ -180,6 +187,11 @@ class CirclesView: UIView {
         usedDiameters.append(diameter)
         return diameter
     }
+    
+    func makeFirstRect(){
+        
+    }
+    
     
     // MARK: Circle Rect
     func getRect(diameter: CGFloat, isFirst: Bool = false) -> CGRect {
@@ -235,7 +247,7 @@ class CirclesView: UIView {
     
     //MARK: Out of bounds
     func checkOutOfBounds(rect: CGRect)->Bool{
-        return rect.minX < bounds.minX || rect.minY < bounds.minX
+        return rect.minX < bounds.minX || rect.minY < bounds.minX || rect.maxX > bounds.maxX || rect.maxY > bounds.maxY
     }
     
 }
