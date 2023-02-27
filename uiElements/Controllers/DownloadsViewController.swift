@@ -31,8 +31,8 @@ class DownloadsViewController: UIViewController {
         })
         
         circleViewContainer.snp.makeConstraints({ make in
-            make.width.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.bottom.centerX.equalToSuperview()
 //                .offset(-40)
             make.height.equalToSuperview().multipliedBy(0.5)
         })
@@ -60,14 +60,19 @@ class CirclesView: UIView {
     var borderColor = UIColor.black
     
     var categories = [Category(id: 0, color: .green, name: "ahmed"),
-                      Category(id: 2, color: .red, name: "ahmed"),
-                      Category(id: 3, color: .blue, name: "ahmed"),
-                      Category(id: 4, color: .systemPink, name: "ahmed"),
-                      Category(id: 5, color: .systemCyan, name: "ahmed"),
-                      Category(id: 6, color: .systemMint, name: "ahmed"),
-                      Category(id: 7, color: .systemTeal, name: "ahmed"),
-                      Category(id: 8, color: .systemMint, name: "ahmed"),
-                      Category(id: 9, color: .systemMint, name: "ahmed"),
+                      Category(id: 1, color: .red, name: "ahmed"),
+                      Category(id: 2, color: .blue, name: "ahmed"),
+                      Category(id: 3, color: .systemPink, name: "ahmed"),
+                      Category(id: 4, color: .systemCyan, name: "ahmed"),
+                      Category(id: 5, color: .systemMint, name: "ahmed"),
+                      Category(id: 6, color: .systemTeal, name: "ahmed"),
+                      Category(id: 7, color: .systemMint, name: "ahmed"),
+                      Category(id: 8, color: .systemGray, name: "ahmed"),
+                      Category(id: 9, color: .systemBrown, name: "ahmed"),
+                      Category(id: 10, color: .systemTeal, name: "ahmed"),
+                      Category(id: 11, color: .systemMint, name: "ahmed"),
+//                      Category(id: 12, color: .systemTeal, name: "ahmed"),
+//                      Category(id: 13, color: .systemMint, name: "ahmed"),
 
 ]
     
@@ -112,7 +117,6 @@ class CirclesView: UIView {
                 
             }else{
                 
-                
                 diameter = getDiameter()
                 
                 //2. Circle Rect
@@ -142,30 +146,17 @@ class CirclesView: UIView {
     
     func calculateMidCircleDiamter()->CGFloat{
         
-        // 6Y + x = 170  1
-        
-        // 7Y + x = 160  2
-        
-        
-        // Y = -10
-        
-        // x = 230
-        
-        
-        // 8Y + x = 150
-        
-        // ((6 * 35) - (6 * 12)) = 170, ((7 * 35) - (7 * 12)) = 160, 8 - 150, 10 - 130
-        
-        // 8 -> 150
-        //if all are 10 -> 130
-        
-        let diam: CGFloat = (CGFloat(categories.count) * -10) + 230
+        let diam: CGFloat = (bounds.width / 20)
+//        - CGFloat(Double(categories.count) * 3)
+//        (CGFloat(categories.count) * 12)
         
         return diam
     }
     
     func calculateOtherCirclesDiamter()->CGFloat{
-        let diam = (CGFloat(categories.count) * 9)
+        let diam = (bounds.width / 20)
+//        - CGFloat(Double(categories.count) * 3)
+//        (CGFloat(categories.count) * 8)
         
         return diam
     }
@@ -186,10 +177,6 @@ class CirclesView: UIView {
         }
         usedDiameters.append(diameter)
         return diameter
-    }
-    
-    func makeFirstRect(){
-        
     }
     
     
