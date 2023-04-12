@@ -10,255 +10,134 @@ import UIKit
 class DownloadsViewController: UIViewController {
     
     // MARK: Circles Views
-    let circleViewContainer: UIView = {
-        let vw = UIView()
-        vw.layer.borderWidth = 2
-        vw.layer.borderColor = UIColor.black.cgColor
-        return vw
-    }()
-    
-    let circlesView = CirclesView()
-    func makeCircles(){
-        view.addSubview(circleViewContainer)
 
-        circleViewContainer.addSubview(circlesView)
-        
-        circlesView.snp.makeConstraints({ make in
-            make.width.equalToSuperview()
-//            make.bottom.equalToSuperview().offset(-40)
-            make.height.equalToSuperview()
-//                .multipliedBy(0.5)
-        })
-        
-        circleViewContainer.snp.makeConstraints({ make in
-            make.width.equalToSuperview().multipliedBy(0.9)
-            make.bottom.centerX.equalToSuperview()
-//                .offset(-40)
-            make.height.equalToSuperview().multipliedBy(0.5)
-        })
-    }
+    
     
     // MARK: Didload
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
-        makeCircles()
+        navigationItem.title = "search"
+        setupTableView()
     }
-}
+    
+    // MARK: TableView
+    var DISCOUNT_CELL = DiscountCellTableViewCell.id
+    var MEALS_CELL = MealsTableViewCell.id
+        var CHEFS_CELL = ChefsTableViewCell.id
 
-struct Category{
-    var id: Int
-    var color: UIColor
+    //
+        lazy var tableView: UITableView = {
+            //table header to scroll and not stick
+            let tableView = UITableView(frame: CGRectZero, style: .grouped)
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = .white
+            tableView.showsVerticalScrollIndicator = false
+            tableView.register(UINib(nibName: DISCOUNT_CELL, bundle: nil), forCellReuseIdentifier: DISCOUNT_CELL)
+            
+            tableView.register(UINib(nibName: MEALS_CELL, bundle: nil), forCellReuseIdentifier: MEALS_CELL)
+            tableView.register(UINib(nibName: CHEFS_CELL, bundle: nil), forCellReuseIdentifier: CHEFS_CELL)
+            
+            tableView.separatorStyle = .none
+            return tableView
+        }()
+        
+        func setupTableView(){
+    //        tableView
+    //        tableView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(tableView)
+
+            
+            tableView.snp.makeConstraints({ make in
+                make.top.equalToSuperview()
+    //            make.height.equalToSuperview()
+                make.width.equalToSuperview()
+                make.bottom.equalToSuperview()
+
+
+            })
+        }
+    
+    var discount: String = "50%"
+    var meals: [Meal] = [Meal(name: "green", price: 100),
+                         Meal(name: "flesh", price: 200)]
+    var chefs: [Chef] = [Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200)]
+    
+//    //MARK: Helpers
+//    func getTableRows(row: Int)->Int{
+//            guard let tableCellBasedOnSegmented = TableSections(rawValue: row) else{ fatalError()}
+//            var rowsCount = 0
+//
+//            switch tableCellBasedOnSegmented {
+//            case .discount:
+//                rowsCount = 1
+//            case .meals:
+//                rowsCount = meals.count
+//            case .chefs:
+//                rowsCount = chefs.count
+//            }
+//            return rowsCount
+//        }
+}
+struct Chef{
     var name: String
+    var popularity: Int
+    
+}
+struct Meal{
+    var name: String
+    var price: Int
+    
+}
+extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        
+        guard let tableCellBasedOnSegmented = TableSections(rawValue: indexPath.row) else{ fatalError()}
+//        guard let tableCellBasedOnSegmented = TableCellWithSegmented(rawValue: 0) else{ fatalError()}
+        var cell = UITableViewCell()
+        
+        switch tableCellBasedOnSegmented {
+        case .discount:
+            // items cell
+            guard let innerCell = tableView.dequeueReusableCell(withIdentifier: DiscountCellTableViewCell.id) as? DiscountCellTableViewCell else{fatalError()}
+            
+//            innerCell.config(ingredient: ingredients[indexPath.row])
+            cell = innerCell
+            
+            
+        case .meals:
+            // first cell - offers
+            guard let innerCell = tableView.dequeueReusableCell(withIdentifier: MEALS_CELL) as? MealsTableViewCell else{fatalError()}
+            
+//            innerCell.config(videoStep: videoSteps[indexPath.row], row: indexPath.row)
+            cell = innerCell
+        
+        case .chefs:
+            // first cell - offers
+            guard let innerCell = tableView.dequeueReusableCell(withIdentifier: CHEFS_CELL) as? ChefsTableViewCell else{fatalError()}
+            
+//            innerCell.config(videoStep: videoSteps[indexPath.row], row: indexPath.row)
+            cell = innerCell
+        
+        }
+
+        return cell
+    }
+    
+    
 }
 
-// MARK: Circles View
-class CirclesView: UIView {
-
-    var myColor = UIColor.red
-    var borderColor = UIColor.black
-
-    var categories = [Category(id: 0, color: .green, name: "ahmed"),
-                      Category(id: 1, color: .red, name: "ahmed"),
-                      Category(id: 2, color: .blue, name: "ahmed"),
-                      Category(id: 3, color: .systemPink, name: "ahmed"),
-                      Category(id: 4, color: .systemCyan, name: "ahmed"),
-                      Category(id: 5, color: .systemMint, name: "ahmed"),
-                      Category(id: 6, color: .systemTeal, name: "ahmed"),
-                      Category(id: 7, color: .systemMint, name: "ahmed"),
-//                      Category(id: 8, color: .systemGray, name: "ahmed"),
-//                      Category(id: 9, color: .systemBrown, name: "ahmed"),
-//                      Category(id: 10, color: .systemTeal, name: "ahmed"),
-//                      Category(id: 11, color: .systemMint, name: "ahmed"),
-//                      Category(id: 12, color: .systemTeal, name: "ahmed"),
-//                      Category(id: 13, color: .systemMint, name: "ahmed"),
-
-]
-
-    var usedRects: [CGRect] = []
-    var usedDiameters: [CGFloat] = []
-
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = .systemBackground
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        setNeedsDisplay()
-    }
-
-
-
-    // MARK: Draw
-    override func draw(_ rect: CGRect) {
-        usedRects = []
-        usedDiameters = []
-
-        for category in categories {
-
-            //1. Circle Diameter
-            var diameter: CGFloat = 0
-
-            //2. Circle Rect
-            var rect: CGRect = .zero
-
-            if category.id == 0{
-                //1. Circle Diameter
-                diameter = getDiameter(isFirst: true)
-
-                //2. Circle Rect
-                rect = getRect(diameter: diameter, isFirst: true)
-
-            }else{
-
-                diameter = getDiameter()
-
-                //2. Circle Rect
-                rect = getRect(diameter: diameter)
-                
-
-            }
-            
-            
-            
-            //3. Circle Path
-            let circlePath = UIBezierPath(roundedRect: rect, cornerRadius: diameter / 2)
-
-            //4. Circle Color
-            category.color.setFill()
-
-            //5. Draw Circle
-            circlePath.fill()
-
-            //6. Circle Border Color
-            //            borderColor.setStroke()
-
-            //7. Draw Circle Border
-            //            circlePath.stroke()
-
-        }
-
-
-    }
-
-    func calculateMidCircleDiamter()->CGFloat{
-
-        let diam: CGFloat = bounds.width / CGFloat(Double(categories.count) * 0.4)
-//        (CGFloat(categories.count) * 12)
-
-        return diam
-    }
-
-    func calculateOtherCirclesDiamter()->CGFloat{
-        let diam = bounds.width / CGFloat(Double(categories.count) * 0.5)
-//        bounds.width * 0.01
-        //CGFloat(Double(categories.count) * 100)
-//        (CGFloat(categories.count) * 8)
-
-        return diam
-    }
-    // MARK: Diameter
-    func getDiameter(isFirst: Bool = false, iterations: Int = 0) -> CGFloat {
-        var diameter = CGFloat(0)
-
-        if iterations > 1000{
-//            usedRects = []
-            usedDiameters = []
-
-//            self.draw(CGRectZero)
-            diameter = calculateOtherCirclesDiamter() * 0.8
-            usedDiameters.append(diameter)
-
-            return diameter
-        }
-        
-        if isFirst{
-            diameter = calculateMidCircleDiamter()
-
-        }else{
-            diameter = CGFloat(calculateOtherCirclesDiamter() + CGFloat(arc4random_uniform(10)))
-        }
-
-        for usedDiameter in usedDiameters
-        where usedDiameter == diameter {
-            return getDiameter(iterations: iterations + 1)
-        }
-        usedDiameters.append(diameter)
-        return diameter
-    }
-
-
-    // MARK: Circle Rect
-    func getRect(diameter: CGFloat, isFirst: Bool = false, iterations: Int = 0) -> CGRect {
-        print(iterations, "iterations")
-        var posX: CGFloat = 0
-        var posY: CGFloat = 0
-
-        // created a rect
-        // always intersects
-        var rect = CGRect(x: 0, y: 0, width: 0, height: 0)
-
-
-        if iterations > 1000{
-
-            rect = CGRect(x: posX - (diameter * 0.8), y: posY - (diameter * 0.8), width: (diameter * 0.8), height: (diameter * 0.8))
-            usedRects.append(rect)
-
-            return rect
-
-        }
-        
-
-        if isFirst{
-            posX = CGFloat(UInt32(bounds.midX))
-//            * 0.32
-            posY = CGFloat(UInt32(bounds.midY))
-//            * 0.32
-
-            rect = CGRect(x: posX - diameter/2, y: posY - diameter/2, width: diameter, height: diameter)
-
-            print(posX, "first")
-
-        }else{
-
-        // https://stackoverflow.com/questions/30318002/spawning-a-circle-in-a-random-spot-on-screen
-
-            posX = CGFloat(arc4random_uniform(UInt32(bounds.maxX)))
-            posY = CGFloat(arc4random_uniform(UInt32(bounds.maxY)))
-
-            print(posX, "randomWidth")
-
-            rect = CGRect(x: posX - diameter, y: posY - diameter, width: diameter, height: diameter)
-
-        }
-
-
-        if checkOutOfBounds(rect: rect){
-            return getRect(diameter: diameter, iterations: iterations + 1)
-
-        }
-
-//      check intersection
-        for usedRect in usedRects where usedRect.intersects(rect) {
-            // recursive call crashes
-
-            return getRect(diameter: diameter, iterations: iterations + 1)
-        }
-
-        usedRects.append(rect)
-
-        return rect
-    }
-
-    //MARK: Out of bounds
-    func checkOutOfBounds(rect: CGRect)->Bool{
-        return rect.minX < bounds.minX || rect.minY < bounds.minX || rect.maxX > bounds.maxX || rect.maxY > bounds.maxY
-    }
-
+enum TableSections: Int{
+    case discount
+    case meals
+    case chefs
 }
+ 

@@ -17,7 +17,14 @@
 		EF67BA8A292BA20B00CCB864 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */; };
 		EF67BA8C292BA21200CCB864 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8B292BA21200CCB864 /* SearchViewController.swift */; };
 		EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */; };
+		EF9770DA29E695C400BAB5E5 /* DownloadsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */; };
 		EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */; };
+		EFE1686A29E69D3600842F0B /* DiscountCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE1686829E69D3600842F0B /* DiscountCellTableViewCell.xib */; };
+		EFE1686B29E69D3600842F0B /* DiscountCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE1686929E69D3600842F0B /* DiscountCellTableViewCell.swift */; };
+		EFE1687029E6A2B900842F0B /* MealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE1686E29E6A2B900842F0B /* MealsTableViewCell.swift */; };
+		EFE1687129E6A2B900842F0B /* MealsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE1686F29E6A2B900842F0B /* MealsTableViewCell.xib */; };
+		EFE1687429E6A2E100842F0B /* ChefsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE1687229E6A2E100842F0B /* ChefsTableViewCell.swift */; };
+		EFE1687529E6A2E100842F0B /* ChefsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE1687329E6A2E100842F0B /* ChefsTableViewCell.xib */; };
 		EFEFC059292CE5860085D8B7 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC058292CE5860085D8B7 /* CollectionViewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +40,14 @@
 		EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		EF67BA8B292BA21200CCB864 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViews.swift; sourceTree = "<group>"; };
 		EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderView.swift; sourceTree = "<group>"; };
+		EFE1686829E69D3600842F0B /* DiscountCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCellTableViewCell.xib; sourceTree = "<group>"; };
+		EFE1686929E69D3600842F0B /* DiscountCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountCellTableViewCell.swift; sourceTree = "<group>"; };
+		EFE1686E29E6A2B900842F0B /* MealsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewCell.swift; sourceTree = "<group>"; };
+		EFE1686F29E6A2B900842F0B /* MealsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealsTableViewCell.xib; sourceTree = "<group>"; };
+		EFE1687229E6A2E100842F0B /* ChefsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefsTableViewCell.swift; sourceTree = "<group>"; };
+		EFE1687329E6A2E100842F0B /* ChefsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChefsTableViewCell.xib; sourceTree = "<group>"; };
 		EFEFC058292CE5860085D8B7 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,8 +101,47 @@
 				EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */,
 				EF67BA8B292BA21200CCB864 /* SearchViewController.swift */,
 				EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */,
+				EF9770DB29E69B5400BAB5E5 /* SearchCells */,
+				EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EF9770DB29E69B5400BAB5E5 /* SearchCells */ = {
+			isa = PBXGroup;
+			children = (
+				EF9770E429E69CE600BAB5E5 /* DiscountCells */,
+				EFE1686C29E6A28E00842F0B /* MealsCells */,
+				EFE1686D29E6A29900842F0B /* ChefCells */,
+			);
+			path = SearchCells;
+			sourceTree = "<group>";
+		};
+		EF9770E429E69CE600BAB5E5 /* DiscountCells */ = {
+			isa = PBXGroup;
+			children = (
+				EFE1686929E69D3600842F0B /* DiscountCellTableViewCell.swift */,
+				EFE1686829E69D3600842F0B /* DiscountCellTableViewCell.xib */,
+			);
+			path = DiscountCells;
+			sourceTree = "<group>";
+		};
+		EFE1686C29E6A28E00842F0B /* MealsCells */ = {
+			isa = PBXGroup;
+			children = (
+				EFE1686E29E6A2B900842F0B /* MealsTableViewCell.swift */,
+				EFE1686F29E6A2B900842F0B /* MealsTableViewCell.xib */,
+			);
+			path = MealsCells;
+			sourceTree = "<group>";
+		};
+		EFE1686D29E6A29900842F0B /* ChefCells */ = {
+			isa = PBXGroup;
+			children = (
+				EFE1687229E6A2E100842F0B /* ChefsTableViewCell.swift */,
+				EFE1687329E6A2E100842F0B /* ChefsTableViewCell.xib */,
+			);
+			path = ChefCells;
 			sourceTree = "<group>";
 		};
 		EFEFC053292CE5220085D8B7 /* Views */ = {
@@ -164,8 +217,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE1687129E6A2B900842F0B /* MealsTableViewCell.xib in Resources */,
 				EF67BA7F292B886000CCB864 /* LaunchScreen.storyboard in Resources */,
 				EF67BA7C292B886000CCB864 /* Assets.xcassets in Resources */,
+				EFE1687529E6A2E100842F0B /* ChefsTableViewCell.xib in Resources */,
+				EFE1686A29E69D3600842F0B /* DiscountCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +236,12 @@
 				EF67BA77292B885F00CCB864 /* MainTabBarController.swift in Sources */,
 				EFEFC059292CE5860085D8B7 /* CollectionViewTableViewCell.swift in Sources */,
 				EF67BA73292B885F00CCB864 /* AppDelegate.swift in Sources */,
+				EFE1686B29E69D3600842F0B /* DiscountCellTableViewCell.swift in Sources */,
+				EF9770DA29E695C400BAB5E5 /* DownloadsViews.swift in Sources */,
+				EFE1687429E6A2E100842F0B /* ChefsTableViewCell.swift in Sources */,
 				EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */,
 				EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */,
+				EFE1687029E6A2B900842F0B /* MealsTableViewCell.swift in Sources */,
 				EF67BA75292B885F00CCB864 /* SceneDelegate.swift in Sources */,
 				EF67BA8A292BA20B00CCB864 /* UpcomingViewController.swift in Sources */,
 				EF67BA88292BA19900CCB864 /* HomeViewController.swift in Sources */,
@@ -338,9 +398,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myself.practiseSwiftUI.uiElements;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,9 +429,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myself.practiseSwiftUI.uiElements;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
