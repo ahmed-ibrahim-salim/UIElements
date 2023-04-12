@@ -19,52 +19,52 @@ class MealsTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
     }
     
+    @IBOutlet weak var collectionView: UICollectionView!
     override func layoutSubviews() {
         super.layoutSubviews()
-        makeCollectionView()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: MealsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: MealsCollectionViewCell.id)
+//        makeCollectionView()
         
     }
     
     // MARK: Collection
-    var collectionView: UICollectionView! = {
-        // Collection View
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.alwaysBounceHorizontal = true
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        collectionView.register(UINib(nibName: MealsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: MealsCollectionViewCell.id)
-        
-        
-        //        collectionView.layer.borderWidth = 2
-        //        collectionView.layer.borderColor = UIColor.black.cgColor
-        return collectionView
-    }()
+//    var collectionView: UICollectionView! = {
+//        // Collection View
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .horizontal
+//
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        collectionView.backgroundColor = .clear
+//        collectionView.contentInsetAdjustmentBehavior = .never
+//        collectionView.alwaysBounceHorizontal = true
+//        collectionView.showsVerticalScrollIndicator = false
+//        collectionView.showsHorizontalScrollIndicator = false
+//
+//        collectionView.register(UINib(nibName: MealsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: MealsCollectionViewCell.id)
+//
+//
+//        //        collectionView.layer.borderWidth = 2
+//        //        collectionView.layer.borderColor = UIColor.black.cgColor
+//        return collectionView
+//    }()
     
-    func makeCollectionView(){
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        addSubview(collectionView)
-        
-        collectionView.snp.makeConstraints({make in
-            make.edges.equalToSuperview()
-            
-        })
-        
-        collectionView.layoutIfNeeded()
-        
-    }
+//    func makeCollectionView(){
+//
+//        addSubview(collectionView)
+//
+//        collectionView.snp.makeConstraints({make in
+//            make.top.equalTo(self.frame.height - 30)
+//
+//            make.bottom.leading.trailing.equalToSuperview()
+//        })
+//
+//        collectionView.layoutIfNeeded()
+//
+//    }
 }
-
-
-
-
 
 
 // MARK: Collection
@@ -89,7 +89,7 @@ extension MealsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MealsTableViewCell: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width / 3, height: self.collectionView.frame.height)
+        return CGSize(width: self.collectionView.frame.width / 3, height: 60)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10

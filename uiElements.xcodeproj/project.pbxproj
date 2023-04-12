@@ -21,6 +21,8 @@
 		EF9AB2EC29E6A95900A1BD25 /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9AB2EB29E6A95900A1BD25 /* DiscountCollectionViewCell.xib */; };
 		EF9AB2F029E6AE9800A1BD25 /* MealsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9AB2EE29E6AE9800A1BD25 /* MealsCollectionViewCell.swift */; };
 		EF9AB2F129E6AE9800A1BD25 /* MealsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9AB2EF29E6AE9800A1BD25 /* MealsCollectionViewCell.xib */; };
+		EFC9F6EB29E6B6A6005615BD /* ChefsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9F6E929E6B6A6005615BD /* ChefsCollectionViewCell.swift */; };
+		EFC9F6EC29E6B6A6005615BD /* ChefsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFC9F6EA29E6B6A6005615BD /* ChefsCollectionViewCell.xib */; };
 		EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */; };
 		EFE1686A29E69D3600842F0B /* DiscountCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFE1686829E69D3600842F0B /* DiscountCellTableViewCell.xib */; };
 		EFE1686B29E69D3600842F0B /* DiscountCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE1686929E69D3600842F0B /* DiscountCellTableViewCell.swift */; };
@@ -48,6 +50,8 @@
 		EF9AB2EB29E6A95900A1BD25 /* DiscountCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCollectionViewCell.xib; sourceTree = "<group>"; };
 		EF9AB2EE29E6AE9800A1BD25 /* MealsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF9AB2EF29E6AE9800A1BD25 /* MealsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealsCollectionViewCell.xib; sourceTree = "<group>"; };
+		EFC9F6E929E6B6A6005615BD /* ChefsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefsCollectionViewCell.swift; sourceTree = "<group>"; };
+		EFC9F6EA29E6B6A6005615BD /* ChefsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChefsCollectionViewCell.xib; sourceTree = "<group>"; };
 		EFCF87F3292F9CFF006A31A3 /* HeroHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderView.swift; sourceTree = "<group>"; };
 		EFE1686829E69D3600842F0B /* DiscountCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCellTableViewCell.xib; sourceTree = "<group>"; };
 		EFE1686929E69D3600842F0B /* DiscountCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +148,15 @@
 			path = MealsCollCell;
 			sourceTree = "<group>";
 		};
+		EFC9F6E829E6B691005615BD /* ChefsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC9F6E929E6B6A6005615BD /* ChefsCollectionViewCell.swift */,
+				EFC9F6EA29E6B6A6005615BD /* ChefsCollectionViewCell.xib */,
+			);
+			path = ChefsCell;
+			sourceTree = "<group>";
+		};
 		EFE1686C29E6A28E00842F0B /* MealsCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 		EFE1686D29E6A29900842F0B /* ChefCells */ = {
 			isa = PBXGroup;
 			children = (
+				EFC9F6E829E6B691005615BD /* ChefsCell */,
 				EFE1687229E6A2E100842F0B /* ChefsTableViewCell.swift */,
 				EFE1687329E6A2E100842F0B /* ChefsTableViewCell.xib */,
 			);
@@ -249,6 +263,7 @@
 				EF9AB2EC29E6A95900A1BD25 /* DiscountCollectionViewCell.xib in Resources */,
 				EF67BA7F292B886000CCB864 /* LaunchScreen.storyboard in Resources */,
 				EF67BA7C292B886000CCB864 /* Assets.xcassets in Resources */,
+				EFC9F6EC29E6B6A6005615BD /* ChefsCollectionViewCell.xib in Resources */,
 				EFE1687529E6A2E100842F0B /* ChefsTableViewCell.xib in Resources */,
 				EF9AB2F129E6AE9800A1BD25 /* MealsCollectionViewCell.xib in Resources */,
 				EFE1686A29E69D3600842F0B /* DiscountCellTableViewCell.xib in Resources */,
@@ -270,6 +285,7 @@
 				EF9770DA29E695C400BAB5E5 /* DownloadsViews.swift in Sources */,
 				EFE1687429E6A2E100842F0B /* ChefsTableViewCell.swift in Sources */,
 				EF9AB2F029E6AE9800A1BD25 /* MealsCollectionViewCell.swift in Sources */,
+				EFC9F6EB29E6B6A6005615BD /* ChefsCollectionViewCell.swift in Sources */,
 				EFCF87F4292F9CFF006A31A3 /* HeroHeaderView.swift in Sources */,
 				EFE1687829E6A90D00842F0B /* DiscountCollectionViewCell.swift in Sources */,
 				EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */,

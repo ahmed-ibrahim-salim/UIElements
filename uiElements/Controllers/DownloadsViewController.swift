@@ -81,6 +81,7 @@ class DownloadsViewController: UIViewController {
     //            }
     //            return rowsCount
     //        }
+    
 }
 struct Chef{
     var name: String
@@ -140,10 +141,26 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
             return 150
         case .meals:
             
-            return 200
+            return 100
             
         case .chefs:
-            return 300
+            return UITableView.automaticDimension
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let tableCellBasedOnType = TableSections(rawValue: indexPath.row) else{ fatalError()}
+        
+        switch tableCellBasedOnType {
+        case .discount:
+            return 150
+        case .meals:
+            
+            return 100
+            
+        case .chefs:
+            return UITableView.automaticDimension
             
         }
     }

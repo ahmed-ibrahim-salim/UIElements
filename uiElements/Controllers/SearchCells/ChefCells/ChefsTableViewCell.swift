@@ -17,4 +17,43 @@ class ChefsTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
     }
     
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: ChefsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: ChefsCollectionViewCell.id)
+        
+    }
+}
+
+
+// MARK: Collection
+extension ChefsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChefsCollectionViewCell.id, for: indexPath) as! ChefsCollectionViewCell
+        
+        
+        cell.chefImage.image = UIImage(systemName: "person")
+        
+        return cell
+    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        vm.onePreferenceManager.itemSelected(index: indexPath.row)
+    //    }
+    
+}
+
+extension ChefsTableViewCell: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        10
+    }
 }

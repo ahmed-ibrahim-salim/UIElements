@@ -16,47 +16,17 @@ class DiscountCellTableViewCell: UITableViewCell {
         // Initialization code
         contentView.backgroundColor = .white
     }
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        makeCollectionView()
-
-    }
-    
-    // MARK: Collection
-    var collectionView: UICollectionView! = {
-        // Collection View
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.alwaysBounceHorizontal = true
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-
-        collectionView.register(UINib(nibName: DiscountCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DiscountCollectionViewCell.id)
-        
-        
-        //        collectionView.layer.borderWidth = 2
-        //        collectionView.layer.borderColor = UIColor.black.cgColor
-        return collectionView
-    }()
-    
-    func makeCollectionView(){
         collectionView.delegate = self
         collectionView.dataSource = self
-        addSubview(collectionView)
-        
-        collectionView.snp.makeConstraints({make in
-            make.edges.equalToSuperview()
-            
-        })
-        collectionView.layoutIfNeeded()
-        
+        collectionView.register(UINib(nibName: DiscountCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DiscountCollectionViewCell.id)
+//        makeCollectionView()
+
     }
+
 }
 
 
@@ -82,7 +52,7 @@ extension DiscountCellTableViewCell: UICollectionViewDelegate, UICollectionViewD
 
 extension DiscountCellTableViewCell: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width, height: self.frame.height)
+        return CGSize(width: self.collectionView.frame.width, height: 130)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         20
