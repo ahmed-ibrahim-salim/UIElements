@@ -10,50 +10,67 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealsTableViewCell" rowHeight="125" id="KGk-i7-Jjw" customClass="MealsTableViewCell" customModule="uiElements" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="425" height="125"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealsTableViewCell" rowHeight="298" id="KGk-i7-Jjw" customClass="MealsTableViewCell" customModule="uiElements" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="298"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="425" height="125"/>
+                <rect key="frame" x="0.0" y="0.0" width="500" height="298"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-cT-p5j">
-                        <rect key="frame" x="5" y="5" width="415" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XkY-sv-euv">
-                        <rect key="frame" x="5" y="34" width="415" height="86"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-9o-J50">
+                        <rect key="frame" x="5" y="5" width="490" height="288"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XkY-sv-euv">
+                                <rect key="frame" x="5" y="31" width="480" height="252"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H36-xX-FAc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-cT-p5j">
+                                <rect key="frame" x="5" y="5" width="480" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H36-xX-FAc">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
+                        <constraints>
+                            <constraint firstItem="ZkL-cT-p5j" firstAttribute="top" secondItem="fH1-9o-J50" secondAttribute="top" constant="5" id="MMa-nz-kK3"/>
+                            <constraint firstAttribute="trailing" secondItem="ZkL-cT-p5j" secondAttribute="trailing" constant="5" id="QU7-MM-e1Q"/>
+                            <constraint firstItem="ZkL-cT-p5j" firstAttribute="leading" secondItem="fH1-9o-J50" secondAttribute="leading" constant="5" id="bs8-Cw-STl"/>
+                            <constraint firstItem="XkY-sv-euv" firstAttribute="leading" secondItem="ZkL-cT-p5j" secondAttribute="leading" id="bub-o9-qbC"/>
+                            <constraint firstAttribute="bottom" secondItem="XkY-sv-euv" secondAttribute="bottom" constant="5" id="mCT-Ou-XQo"/>
+                            <constraint firstItem="XkY-sv-euv" firstAttribute="top" secondItem="ZkL-cT-p5j" secondAttribute="bottom" constant="5" id="vmp-gS-w67"/>
+                            <constraint firstItem="XkY-sv-euv" firstAttribute="trailing" secondItem="ZkL-cT-p5j" secondAttribute="trailing" id="yE4-3c-axG"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemGray4Color"/>
                 <constraints>
-                    <constraint firstItem="XkY-sv-euv" firstAttribute="trailing" secondItem="ZkL-cT-p5j" secondAttribute="trailing" id="Ky7-V2-uw5"/>
-                    <constraint firstAttribute="trailing" secondItem="ZkL-cT-p5j" secondAttribute="trailing" constant="5" id="LA6-L8-5UJ"/>
-                    <constraint firstItem="ZkL-cT-p5j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="g1J-Nj-xxb"/>
-                    <constraint firstItem="XkY-sv-euv" firstAttribute="leading" secondItem="ZkL-cT-p5j" secondAttribute="leading" id="jG1-9r-74e"/>
-                    <constraint firstItem="ZkL-cT-p5j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="kYq-Lh-yVh"/>
-                    <constraint firstAttribute="bottom" secondItem="XkY-sv-euv" secondAttribute="bottom" constant="5" id="tDm-3F-FKG"/>
-                    <constraint firstItem="XkY-sv-euv" firstAttribute="top" secondItem="ZkL-cT-p5j" secondAttribute="bottom" constant="8" symbolic="YES" id="xbs-Uq-DXm"/>
+                    <constraint firstItem="fH1-9o-J50" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="KD4-id-Rur"/>
+                    <constraint firstItem="fH1-9o-J50" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="NKz-sR-Pyu"/>
+                    <constraint firstAttribute="bottom" secondItem="fH1-9o-J50" secondAttribute="bottom" constant="5" id="m0t-ph-4uC"/>
+                    <constraint firstAttribute="trailing" secondItem="fH1-9o-J50" secondAttribute="trailing" constant="5" id="rBI-zA-p0j"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="XkY-sv-euv" id="500-fQ-Ma8"/>
+                <outlet property="container" destination="fH1-9o-J50" id="drI-Jz-RxT"/>
             </connections>
-            <point key="canvasLocation" x="180.91603053435114" y="16.549295774647888"/>
+            <point key="canvasLocation" x="238.1679389312977" y="77.464788732394368"/>
         </tableViewCell>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

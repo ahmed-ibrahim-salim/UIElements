@@ -1,10 +1,3 @@
-//b.equalToSuperview()
-//
-//        })
-//        collectionView.layoutIfNeeded()
-//
-//    }
-//}
 
 
 import UIKit
@@ -15,13 +8,21 @@ class MealsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        contentView.backgroundColor = .white
     }
     
+    @IBOutlet weak var container: UIView!
+
     @IBOutlet weak var collectionView: UICollectionView!
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        contentView.backgroundColor = UIColor.systemGray4
+        container.backgroundColor = .white
+
+        container.layer.cornerRadius = 10
+
+        
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: MealsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: MealsCollectionViewCell.id)

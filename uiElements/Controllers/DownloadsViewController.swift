@@ -16,7 +16,7 @@ class DownloadsViewController: UIViewController {
     // MARK: Didload
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray2
         navigationItem.title = "search"
         setupTableView()
     }
@@ -32,7 +32,7 @@ class DownloadsViewController: UIViewController {
         let tableView = UITableView(frame: CGRectZero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .red
         tableView.showsVerticalScrollIndicator = false
         tableView.register(UINib(nibName: DISCOUNT_CELL, bundle: nil), forCellReuseIdentifier: DISCOUNT_CELL)
         
@@ -53,7 +53,7 @@ class DownloadsViewController: UIViewController {
         
         
         tableView.snp.makeConstraints({ make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(100)
             //            make.height.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.95)
@@ -164,19 +164,16 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
             return 150
         case .meals:
             
-            return 100
+            return 150
             
         case .chefs:
             print(chefs.count)
             let imgHeight = 100.0
             let contentHeight = ceil(CGFloat(chefs.count / 3)) * imgHeight
             
-            return contentHeight + (ceil(CGFloat(chefs.count / 3) * 30))
+            return contentHeight + (ceil(CGFloat(chefs.count / 3) * 32))
         }
     }
-    
-   
-    
 }
 
 enum TableSections: Int{

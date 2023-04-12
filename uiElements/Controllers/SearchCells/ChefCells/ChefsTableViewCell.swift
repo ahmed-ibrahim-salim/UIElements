@@ -14,9 +14,9 @@ class ChefsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentView.backgroundColor = .white
     }
     
+    @IBOutlet weak var container: UIView!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -24,8 +24,13 @@ class ChefsTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        collectionView.layer.borderColor = UIColor.black.cgColor
-        collectionView.layer.borderWidth = 1
+        contentView.backgroundColor = UIColor.systemGray4
+        container.backgroundColor = .white
+
+        container.layer.cornerRadius = 10
+        
+//        collectionView.layer.borderColor = UIColor.black.cgColor
+//        collectionView.layer.borderWidth = 1
         
         collectionView.delegate = self
         collectionView.dataSource = self
