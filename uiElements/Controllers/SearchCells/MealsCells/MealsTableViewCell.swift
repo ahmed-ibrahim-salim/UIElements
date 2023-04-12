@@ -22,7 +22,7 @@ class MealsTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         makeCollectionView()
-
+        
     }
     
     // MARK: Collection
@@ -38,8 +38,8 @@ class MealsTableViewCell: UITableViewCell {
         collectionView.alwaysBounceHorizontal = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-
-        collectionView.register(UINib(nibName: DiscountCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DiscountCollectionViewCell.id)
+        
+        collectionView.register(UINib(nibName: MealsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: MealsCollectionViewCell.id)
         
         
         //        collectionView.layer.borderWidth = 2
@@ -56,11 +56,11 @@ class MealsTableViewCell: UITableViewCell {
             make.edges.equalToSuperview()
             
         })
-
-                collectionView.layoutIfNeeded()
         
-            }
-        }
+        collectionView.layoutIfNeeded()
+        
+    }
+}
 
 
 
@@ -81,9 +81,9 @@ extension MealsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        vm.onePreferenceManager.itemSelected(index: indexPath.row)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        vm.onePreferenceManager.itemSelected(index: indexPath.row)
+    //    }
     
 }
 
@@ -92,6 +92,6 @@ extension MealsTableViewCell: UICollectionViewDelegateFlowLayout{
         return CGSize(width: self.collectionView.frame.width / 3, height: self.collectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        20
+        10
     }
 }
