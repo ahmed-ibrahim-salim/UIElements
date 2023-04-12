@@ -1,10 +1,72 @@
-b.equalToSuperview()
+//b.equalToSuperview()
+//
+//        })
+//        collectionView.layoutIfNeeded()
+//
+//    }
+//}
+
+
+import UIKit
+
+class MealsTableViewCell: UITableViewCell {
+    
+    static let id = "MealsTableViewCell"
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        contentView.backgroundColor = .white
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        makeCollectionView()
+
+    }
+    
+    // MARK: Collection
+    var collectionView: UICollectionView! = {
+        // Collection View
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+
+        collectionView.register(UINib(nibName: DiscountCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DiscountCollectionViewCell.id)
+        
+        
+        //        collectionView.layer.borderWidth = 2
+        //        collectionView.layer.borderColor = UIColor.black.cgColor
+        return collectionView
+    }()
+    
+    func makeCollectionView(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints({make in
+            make.edges.equalToSuperview()
             
         })
-        collectionView.layoutIfNeeded()
+
+                collectionView.layoutIfNeeded()
         
-    }
-}
+            }
+        }
+
+
+
+
+
+
 // MARK: Collection
 extension MealsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
