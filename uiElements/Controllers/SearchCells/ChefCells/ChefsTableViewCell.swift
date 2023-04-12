@@ -19,8 +19,14 @@ class ChefsTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        collectionView.layer.borderColor = UIColor.black.cgColor
+        collectionView.layer.borderWidth = 1
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: ChefsCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: ChefsCollectionViewCell.id)
@@ -32,7 +38,7 @@ class ChefsTableViewCell: UITableViewCell {
 // MARK: Collection
 extension ChefsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 22
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

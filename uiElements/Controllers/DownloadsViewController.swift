@@ -46,6 +46,9 @@ class DownloadsViewController: UIViewController {
     func setupTableView(){
         //        tableView
         //        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
+        
         view.addSubview(tableView)
         
         
@@ -64,6 +67,26 @@ class DownloadsViewController: UIViewController {
     var meals: [Meal] = [Meal(name: "green", price: 100),
                          Meal(name: "flesh", price: 200)]
     var chefs: [Chef] = [Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                                              Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                                              Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                                              Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                                              Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
+                         Chef(name: "flesh", popularity: 200),
+                         Chef(name: "green", popularity: 100),
                          Chef(name: "flesh", popularity: 200)]
     
     //    //MARK: Helpers
@@ -144,26 +167,15 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
             return 100
             
         case .chefs:
-            return UITableView.automaticDimension
+            print(chefs.count)
+            let imgHeight = 100.0
+            let contentHeight = ceil(CGFloat(chefs.count / 3)) * imgHeight
             
+            return contentHeight + (ceil(CGFloat(chefs.count / 3) * 30))
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let tableCellBasedOnType = TableSections(rawValue: indexPath.row) else{ fatalError()}
-        
-        switch tableCellBasedOnType {
-        case .discount:
-            return 150
-        case .meals:
-            
-            return 100
-            
-        case .chefs:
-            return UITableView.automaticDimension
-            
-        }
-    }
+   
     
 }
 
