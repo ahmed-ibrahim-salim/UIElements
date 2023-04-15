@@ -13,6 +13,8 @@ class MealsTableViewCell: UITableViewCell {
     @IBOutlet weak var container: UIView!
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -21,7 +23,7 @@ class MealsTableViewCell: UITableViewCell {
 
         container.layer.cornerRadius = 10
 
-        
+        collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.delegate = self
         collectionView.dataSource = self

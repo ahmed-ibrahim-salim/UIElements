@@ -8,9 +8,7 @@
 import UIKit
 
 class DownloadsViewController: UIViewController {
-    
-    // MARK: Circles Views
-    
+        
     
     
     // MARK: Didload
@@ -32,7 +30,7 @@ class DownloadsViewController: UIViewController {
         let tableView = UITableView(frame: CGRectZero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.register(UINib(nibName: DISCOUNT_CELL, bundle: nil), forCellReuseIdentifier: DISCOUNT_CELL)
         
@@ -53,7 +51,7 @@ class DownloadsViewController: UIViewController {
         
         
         tableView.snp.makeConstraints({ make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalToSuperview()
             //            make.height.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.95)

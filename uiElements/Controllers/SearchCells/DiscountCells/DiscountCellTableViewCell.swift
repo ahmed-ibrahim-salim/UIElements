@@ -16,15 +16,16 @@ class DiscountCellTableViewCell: UITableViewCell {
         // Initialization code
 //        contentView.backgroundColor = .white
     }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        container.backgroundColor = .white
 //
 //        container.layer.cornerRadius = 10
         
+        collectionView.layer.cornerRadius = 8
         contentView.backgroundColor = UIColor.systemGray4
         
         collectionView.delegate = self

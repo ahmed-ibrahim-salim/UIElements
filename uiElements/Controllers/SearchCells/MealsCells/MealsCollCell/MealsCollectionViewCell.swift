@@ -19,4 +19,11 @@ class MealsCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+//        containerView.backgroundColor = UIColor() #EEEAF9
+//        #EEEAF9
+        containerView.layer.cornerRadius = 8
+    }
 }

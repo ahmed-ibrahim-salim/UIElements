@@ -17,7 +17,6 @@
 		EF67BA8A292BA20B00CCB864 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */; };
 		EF67BA8C292BA21200CCB864 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8B292BA21200CCB864 /* SearchViewController.swift */; };
 		EF67BA8E292BA21B00CCB864 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */; };
-		EF9770DA29E695C400BAB5E5 /* DownloadsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */; };
 		EF9AB2EC29E6A95900A1BD25 /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9AB2EB29E6A95900A1BD25 /* DiscountCollectionViewCell.xib */; };
 		EF9AB2F029E6AE9800A1BD25 /* MealsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9AB2EE29E6AE9800A1BD25 /* MealsCollectionViewCell.swift */; };
 		EF9AB2F129E6AE9800A1BD25 /* MealsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF9AB2EF29E6AE9800A1BD25 /* MealsCollectionViewCell.xib */; };
@@ -46,7 +45,6 @@
 		EF67BA89292BA20B00CCB864 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		EF67BA8B292BA21200CCB864 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
-		EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViews.swift; sourceTree = "<group>"; };
 		EF9AB2EB29E6A95900A1BD25 /* DiscountCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCollectionViewCell.xib; sourceTree = "<group>"; };
 		EF9AB2EE29E6AE9800A1BD25 /* MealsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF9AB2EF29E6AE9800A1BD25 /* MealsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				EF67BA8B292BA21200CCB864 /* SearchViewController.swift */,
 				EF67BA8D292BA21B00CCB864 /* DownloadsViewController.swift */,
 				EF9770DB29E69B5400BAB5E5 /* SearchCells */,
-				EF9770D929E695C400BAB5E5 /* DownloadsViews.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,7 +279,6 @@
 				EFEFC059292CE5860085D8B7 /* CollectionViewTableViewCell.swift in Sources */,
 				EF67BA73292B885F00CCB864 /* AppDelegate.swift in Sources */,
 				EFE1686B29E69D3600842F0B /* DiscountCellTableViewCell.swift in Sources */,
-				EF9770DA29E695C400BAB5E5 /* DownloadsViews.swift in Sources */,
 				EFE1687429E6A2E100842F0B /* ChefsTableViewCell.swift in Sources */,
 				EF9AB2F029E6AE9800A1BD25 /* MealsCollectionViewCell.swift in Sources */,
 				EFC9F6EB29E6B6A6005615BD /* ChefsCollectionViewCell.swift in Sources */,

@@ -62,6 +62,7 @@
             <connections>
                 <outlet property="containerView" destination="a0j-Di-9aH" id="eTT-CP-BLs"/>
                 <outlet property="dicountLbl" destination="KbK-hD-iu8" id="qsh-aD-SzH"/>
+                <outlet property="discountImg" destination="vCE-zk-Afq" id="Cpj-9t-n61"/>
             </connections>
             <point key="canvasLocation" x="-179" y="-168"/>
         </collectionViewCell>
